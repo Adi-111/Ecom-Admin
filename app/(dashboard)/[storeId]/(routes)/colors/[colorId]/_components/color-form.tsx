@@ -13,7 +13,7 @@ import { Size } from "@prisma/client";
 import { Trash } from "lucide-react";
 
 import { Heading } from "@/components/heading";
-import AlertModal from "@/components/modals/alert-modal";
+import AlertModal from "@/components/models/alert-modal";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
