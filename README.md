@@ -1,37 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-commerce Store with CMS Integration
 
-## Getting Started
+This project is an E-commerce store that is seamlessly integrated with a Content Management System (CMS). The project structure follows a modular and scalable architecture, designed for easy maintenance and extensibility.
 
-First, run the development server:
+## Table of Contents
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Actions](#actions)
+- [App](#app)
+- [Components](#components)
+- [Hooks](#hooks)
+- [Lib](#lib)
+- [API Routes](#api-routes)
+- [Providers](#providers)
+- [Middleware](#middleware)
+- [Prisma](#prisma)
+- [Configuration Files](#configuration-files)
+- [How to Run](#how-to-run)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **CMS Integration**: Seamless integration with a CMS for managing products, categories, and other content.
+- **Modular Architecture**: Organized file structure for easy navigation and code management.
+- **Admin Dashboard**: A powerful admin dashboard for managing products, categories, orders, and more.
+- **API Routes**: RESTful API routes to interact with the backend.
+- **Authentication**: Secure authentication using modern OAuth providers and custom credentials.
+- **Responsive Design**: Fully responsive and optimized for various devices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Actions
+The `actions` directory contains functions that interact with the backend to fetch data such as products, categories, and sales reports.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### App
+The `app` directory is organized into different sections, including:
+- **Auth**: Handles user authentication and authorization.
+- **Dashboard**: The admin dashboard where users can manage their store's data.
+- **Root**: The root layout of the application.
 
-## Learn More
+### Components
+Reusable UI components such as modals, tables, and form elements are stored here. This directory is further divided into:
+- **UI Components**: Common UI elements like buttons, cards, forms, etc.
+- **Models**: Components specific to store models and alerts.
 
-To learn more about Next.js, take a look at the following resources:
+### Hooks
+Custom React hooks are defined here to manage logic that needs to be reused across the application, such as modal management and store origin.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Lib
+The `lib` directory includes utility functions, database connections (via Prisma), and third-party API integrations like Stripe.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### API Routes
+All the API routes are defined within the `app/api` directory, categorized by resource (e.g., `categories`, `products`, `orders`). Each route is responsible for handling CRUD operations.
 
-## Deploy on Vercel
+### Providers
+The `provider` directory contains context providers for managing global state, themes, and modal visibility across the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Middleware
+The `middleware.ts` file handles custom middleware logic for the application, including request validation and authorization checks.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# Ecom-Admin
+### Prisma
+The `prisma` directory contains the database schema definition using Prisma ORM.
+
+### Configuration Files
+- **Tailwind CSS Configuration**: Tailwind configuration for customizing the design system.
+- **TypeScript Configuration**: TypeScript configuration for type-checking.
+- **Next.js Configuration**: Next.js configuration for optimizing the application.
+
+## How to Run
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   ```
+2. **Install Dependencies**:
+   ```bash
+   yarn install
+   ```
+3. **Run the Development Server**:
+   ```bash
+   yarn dev
+   ```
+4. **Access the Application**:
+   Open `http://localhost:3000` in your browser.
+
+file structure : @/tree.txt
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+---
+
+This README gives an overview of the structure and functionality of the E-commerce store connected with a CMS. For further customization and deployment instructions, refer to the detailed documentation within each directory.

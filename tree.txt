@@ -1,0 +1,180 @@
+.
+├── README.md
+├── actions
+│   ├── get-graph-revenue.ts
+│   ├── get-sales-count.ts
+│   ├── get-stock-count.ts
+│   └── get-total-revenue.ts
+├── app
+│   ├── (auth)
+│   │   ├── (routes)
+│   │   │   ├── sign-in
+│   │   │   │   └── [[...sign-in]]
+│   │   │   │       └── page.tsx
+│   │   │   └── sign-up
+│   │   │       └── [[...sign-up]]
+│   │   │           └── page.tsx
+│   │   └── layout.tsx
+│   ├── (dashboard)
+│   │   └── [storeId]
+│   │       ├── (routes)
+│   │       │   ├── billboards
+│   │       │   │   ├── [billboardId]
+│   │       │   │   │   ├── _components
+│   │       │   │   │   │   └── billboard-form.tsx
+│   │       │   │   │   └── page.tsx
+│   │       │   │   ├── _components
+│   │       │   │   │   ├── billboard-client.tsx
+│   │       │   │   │   ├── cell-action.tsx
+│   │       │   │   │   └── columns.tsx
+│   │       │   │   └── page.tsx
+│   │       │   ├── categories
+│   │       │   │   ├── [categoryId]
+│   │       │   │   │   ├── _components
+│   │       │   │   │   │   └── category-form.tsx
+│   │       │   │   │   └── page.tsx
+│   │       │   │   ├── _components
+│   │       │   │   │   ├── cell-action.tsx
+│   │       │   │   │   ├── client.tsx
+│   │       │   │   │   └── columns.tsx
+│   │       │   │   └── page.tsx
+│   │       │   ├── colors
+│   │       │   │   ├── [colorId]
+│   │       │   │   │   ├── _components
+│   │       │   │   │   │   └── color-form.tsx
+│   │       │   │   │   └── page.tsx
+│   │       │   │   ├── _components
+│   │       │   │   │   ├── cell-action.tsx
+│   │       │   │   │   ├── color-client.tsx
+│   │       │   │   │   └── columns.tsx
+│   │       │   │   └── page.tsx
+│   │       │   ├── orders
+│   │       │   │   ├── _components
+│   │       │   │   │   ├── columns.tsx
+│   │       │   │   │   └── order-client.tsx
+│   │       │   │   └── page.tsx
+│   │       │   ├── page.tsx
+│   │       │   ├── products
+│   │       │   │   ├── [productId]
+│   │       │   │   │   ├── _components
+│   │       │   │   │   │   └── product-form.tsx
+│   │       │   │   │   └── page.tsx
+│   │       │   │   ├── _components
+│   │       │   │   │   ├── cell-action.tsx
+│   │       │   │   │   ├── columns.tsx
+│   │       │   │   │   └── product-client.tsx
+│   │       │   │   └── page.tsx
+│   │       │   ├── settings
+│   │       │   │   ├── _components
+│   │       │   │   │   └── settings-form.tsx
+│   │       │   │   └── page.tsx
+│   │       │   └── sizes
+│   │       │       ├── [sizeId]
+│   │       │       │   ├── _components
+│   │       │       │   │   └── size-form.tsx
+│   │       │       │   └── page.tsx
+│   │       │       ├── _components
+│   │       │       │   ├── cell-action.tsx
+│   │       │       │   ├── columns.tsx
+│   │       │       │   └── size-client.tsx
+│   │       │       └── page.tsx
+│   │       └── layout.tsx
+│   ├── (root)
+│   │   ├── (routes)
+│   │   │   └── page.tsx
+│   │   └── layout.tsx
+│   ├── api
+│   │   ├── [storeId]
+│   │   │   ├── billboards
+│   │   │   │   ├── [billboardId]
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   ├── categories
+│   │   │   │   ├── [categoryId]
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   ├── checkout
+│   │   │   │   └── route.ts
+│   │   │   ├── colors
+│   │   │   │   ├── [colorId]
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   ├── products
+│   │   │   │   ├── [productId]
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── route.ts
+│   │   │   └── sizes
+│   │   │       ├── [sizeId]
+│   │   │       │   └── route.ts
+│   │   │       └── route.ts
+│   │   ├── stores
+│   │   │   ├── [storeId]
+│   │   │   │   └── route.tsx
+│   │   │   └── route.ts
+│   │   └── webhook
+│   │       └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   └── layout.tsx
+├── components
+│   ├── api-alert.tsx
+│   ├── api-list.tsx
+│   ├── data-table.tsx
+│   ├── heading.tsx
+│   ├── image-upload.tsx
+│   ├── main-nav.tsx
+│   ├── modal.tsx
+│   ├── models
+│   │   ├── alert-modal.tsx
+│   │   └── store-models.tsx
+│   ├── navbar.tsx
+│   ├── overview.tsx
+│   ├── store-switcher.tsx
+│   ├── theme-toggle.tsx
+│   └── ui
+│       ├── alert.tsx
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── checkbox.tsx
+│       ├── command.tsx
+│       ├── dialog.tsx
+│       ├── dropdown-menu.tsx
+│       ├── form.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── model.tsx
+│       ├── popover.tsx
+│       ├── select.tsx
+│       ├── separator.tsx
+│       └── table.tsx
+├── components.json
+├── hooks
+│   ├── use-origin.tsx
+│   └── use-store-modal.tsx
+├── lib
+│   ├── prismadb.ts
+│   ├── stripe.ts
+│   └── utils.ts
+├── middleware.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+├── prisma
+│   └── schema.prisma
+├── provider
+│   ├── modal-provider.tsx
+│   ├── theme-provider.tsx
+│   └── toast-provider.tsx
+├── public
+│   ├── next.svg
+│   └── vercel.svg
+├── tailwind.config.ts
+├── tree.txt
+├── tsconfig.json
+└── yarn.lock
+tree  [error opening dir]
+/f  [error opening dir]
+
+62 directories, 114 files
