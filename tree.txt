@@ -1,4 +1,3 @@
-.
 ├── README.md
 ├── actions
 │   ├── get-graph-revenue.ts
