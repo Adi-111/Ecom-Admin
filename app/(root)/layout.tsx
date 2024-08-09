@@ -9,7 +9,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         redirect('/sign-in')
     }
 
-    const store =await prismadb.store.findFirst({
+    const store = await prismadb.store.findFirst({
         where: {
             userId
         }
