@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-export const formatter = new Intl.NumberFormat("en-us", {
+export const formatter = new Intl.NumberFormat("en-in", {
   style: 'currency',
-  currency: 'USD'
+  currency: 'INR'
 })
