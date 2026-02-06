@@ -4,14 +4,11 @@ import { NextResponse } from "next/server"
 
 export async function POST(
     req: Request,
-    { params }: {
-        params: {
-            storeId: string
-        }
-    }
+    { params }: { params: Promise<{ storeId: string }> }
 ) {
     try {
-        const { userId } = auth()
+        const { storeId } = await params
+        const { userId } = await auth()
 
         if (!userId) {
             return new NextResponse("Unauthenticated", {
@@ -48,13 +45,13 @@ export async function POST(
         if (!categoryId) {
             return new NextResponse("categoryId is Required", { status: 400 })
         }
-        if (!params.storeId) {
+        if (!storeId) {
             return new NextResponse("Store ID is Required", { status: 400 })
         }
 
         const storeByUserId = await prismadb.store.findFirst({
             where: {
-                id: params.storeId,
+                id: storeId,
                 userId
             }
         })
@@ -72,7 +69,7 @@ export async function POST(
                 colorId,
                 sizeId,
                 categoryId,
-                storeId: params.storeId,
+                storeId,
                 images: {
                     createMany: {
                         data: [...images.map((image: { url: string }) => image)]
@@ -89,26 +86,23 @@ export async function POST(
 
 export async function GET(
     req: Request,
-    { params }: {
-        params: {
-            storeId: string
-        }
-    }
+    { params }: { params: Promise<{ storeId: string }> }
 ) {
     try {
+        const { storeId } = await params
         const { searchParams } = new URL(req.url)
         const categoryId = searchParams.get('categoryId') || undefined
         const sizeId = searchParams.get('sizeId') || undefined
         const colorId = searchParams.get('colorId') || undefined
         const isFeatured = searchParams.get('isFeatured')
 
-        if (!params.storeId) {
+        if (!storeId) {
             return new NextResponse("Store ID is Required", { status: 400 })
         }
 
         const products = await prismadb.product.findMany({
             where: {
-                storeId: params.storeId,
+                storeId,
                 categoryId,
                 colorId,
                 sizeId,

@@ -2,21 +2,18 @@ import prismadb from '@/lib/prismadb'
 import { CategoryForm } from './_components/category-form'
 
 export default async function CategoryPage({ params }: {
-  params: {
-    categoryId: string,
-    storeId: string,
-  }
+  params: Promise<{ categoryId: string; storeId: string }>
 }) {
-
+  const { categoryId, storeId } = await params
   const category = await prismadb.category.findUnique({
     where: {
-      id: params.categoryId
+      id: categoryId
     }
   })
 
   const billboards = await prismadb.billboard.findMany({
     where: {
-      storeId: params.storeId
+      storeId
     }
   })
 

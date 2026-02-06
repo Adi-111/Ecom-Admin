@@ -10,16 +10,15 @@ import Overview from "@/components/overview"
 import { getGraphRevenue } from "@/actions/get-graph-revenue"
 
 interface DashboardProps {
-    params: {
-        storeId: string
-    }
+    params: Promise<{ storeId: string }>
 }
 
 export default async function DashboardPage({ params }: DashboardProps) {
-    const totalRevenue = await getTotalRevenue(params.storeId)
-    const salesCount = await getSalesCount(params.storeId)
-    const stockCount = await getStockCount(params.storeId)
-    const graphData = await getGraphRevenue(params.storeId)
+    const { storeId } = await params
+    const totalRevenue = await getTotalRevenue(storeId)
+    const salesCount = await getSalesCount(storeId)
+    const stockCount = await getStockCount(storeId)
+    const graphData = await getGraphRevenue(storeId)
 
     return (
         <div className="flex-col">

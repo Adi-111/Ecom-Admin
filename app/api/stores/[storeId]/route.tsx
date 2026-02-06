@@ -3,10 +3,11 @@ import { auth } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server"
 
 export async function PATCH(req: Request, { params }: {
-    params: { storeId: string }
+    params: Promise<{ storeId: string }>
 }) {
     try {
-        const { userId } = auth()
+        const { storeId } = await params
+        const { userId } = await auth()
 
         if (!userId) {
             return new NextResponse("Unauthenticated", { status: 401 })
@@ -18,13 +19,13 @@ export async function PATCH(req: Request, { params }: {
             return new NextResponse("Name is equired", { status: 400 })
         }
 
-        if (!params.storeId) {
+        if (!storeId) {
             return new NextResponse("Store id is required", { status: 400 })
         }
 
         const store = await prismadb.store.updateMany({
             where: {
-                id: params.storeId,
+                id: storeId,
                 userId
             },
             data: {
@@ -41,23 +42,24 @@ export async function PATCH(req: Request, { params }: {
 }
 
 export async function DELETE(req: Request, { params }: {
-    params: { storeId: string }
+    params: Promise<{ storeId: string }>
 }) {
     try {
-        const { userId } = auth()
+        const { storeId } = await params
+        const { userId } = await auth()
 
         if (!userId) {
             return new NextResponse("Unauthenticated", { status: 401 })
         }
 
 
-        if (!params.storeId) {
+        if (!storeId) {
             return new NextResponse("Store id is required", { status: 400 })
         }
 
         const store = await prismadb.store.deleteMany({
             where: {
-                id: params.storeId,
+                id: storeId,
                 userId
             }
         })

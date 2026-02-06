@@ -3,7 +3,7 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import prismadb from "@/lib/prismadb";
 
 const corsHeaders = {
@@ -18,8 +18,9 @@ export async function OPTIONS() {
 
 export async function POST(
     req: Request,
-    { params }: { params: { storeId: string } }
+    { params }: { params: Promise<{ storeId: string }> }
 ) {
+    const { storeId } = await params
     const { productIds } = await req.json();
 
     if (!productIds || productIds.length === 0) {
@@ -51,7 +52,7 @@ export async function POST(
 
     const order = await prismadb.order.create({
         data: {
-            storeId: params.storeId,
+            storeId,
             isPaid: false,
             orderItems: {
                 create: productIds.map((productId: string) => ({
@@ -65,7 +66,7 @@ export async function POST(
         }
     });
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
         line_items,
         mode: 'payment',
         billing_address_collection: 'required',
